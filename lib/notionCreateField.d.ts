@@ -3,7 +3,8 @@ export declare enum EType {
     text = "text",
     checkbox = "checkbox",
     date = "date",
-    number = "number"
+    number = "number",
+    select = "select"
 }
 export interface IData {
     type: EType;
@@ -16,6 +17,7 @@ export default class NotionCreateField {
     private makeCheckboxField;
     private makeNumberField;
     private makeDateField;
+    private makeSelectField;
     private makeField;
     createProperties(datas: IData[]): {};
 }

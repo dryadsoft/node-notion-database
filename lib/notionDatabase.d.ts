@@ -17,9 +17,18 @@ export default class NotionDatabase {
     private notionField;
     constructor({ secretKey, databaseId, notionVersion, }: INotionDatabase);
     private createHeaders;
-    query(): Promise<{}[]>;
-    create(newDatas: IData[]): Promise<any>;
-    update({ pageId, updateDatas }: IUpdate): Promise<any>;
+    query(): Promise<{
+        pageId: any;
+        properties: {};
+    }[]>;
+    create(newDatas: IData[]): Promise<{
+        pageId: any;
+        properties: {};
+    }>;
+    update({ pageId, updateDatas }: IUpdate): Promise<{
+        pageId: any;
+        properties: {};
+    }>;
 }
 export {};
 //# sourceMappingURL=notionDatabase.d.ts.map

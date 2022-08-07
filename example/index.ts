@@ -1,5 +1,5 @@
-import NotionDatabase from "../src/notionDatabase";
 import "dotenv/config";
+import NotionDatabase from "../src/notionDatabase";
 import { EType } from "../src/notionCreateField";
 
 (async () => {
