@@ -1,0 +1,1 @@
+{"version":3,"file":"notionField.d.ts","sourceRoot":"","sources":["../src/notionField.ts"],"names":[],"mappings":"AAKA,MAAM,CAAC,OAAO,OAAO,WAAW;IAC9B,OAAO,CAAC,UAAU;IAGlB,OAAO,CAAC,SAAS;IAGjB,OAAO,CAAC,SAAS;IAGjB,OAAO,CAAC,QAAQ;IAwBT,SAAS,CAAC,OAAO,EAAE;QAAE,CAAC,GAAG,EAAE,MAAM,GAAG,GAAG,CAAA;KAAE,EAAE;CAWnD"}
