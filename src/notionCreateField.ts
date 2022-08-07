@@ -1,17 +1,9 @@
-export enum EType {
-  title = "title",
-  text = "text",
-  checkbox = "checkbox",
-  date = "date",
-  number = "number",
-  select = "select",
-}
+type FieldType = "title" | "text" | "checkbox" | "date" | "number" | "select";
 export interface IData {
-  type: EType;
+  type: FieldType;
   key: string;
   value: any;
 }
-
 export default class NotionCreateField {
   private makeTitleField({ key, value }: { key: string; value: string }) {
     return {
@@ -74,22 +66,22 @@ export default class NotionCreateField {
   private makeField({ type, key, value }: IData) {
     let resultField: { [key: string]: any };
     switch (type) {
-      case EType.title:
+      case "title":
         resultField = this.makeTitleField({ key, value });
         break;
-      case EType.text:
+      case "text":
         resultField = this.makeTextField({ key, value });
         break;
-      case EType.checkbox:
+      case "checkbox":
         resultField = this.makeCheckboxField({ key, value });
         break;
-      case EType.date:
+      case "date":
         resultField = this.makeDateField({ key, value });
         break;
-      case EType.number:
+      case "number":
         resultField = this.makeNumberField({ key, value });
         break;
-      case EType.select:
+      case "select":
         resultField = this.makeSelectField({ key, value });
         break;
       default:

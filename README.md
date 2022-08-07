@@ -19,7 +19,6 @@ $ yarn add node-notion-database
 
 ```typescript
 import NotionDatabase from "notionDatabase";
-import { EType } from "notionCreateField";
 
 const notionDatabase = new NotionDatabase({
   secretKey: "Your notion Secret Key",
@@ -31,26 +30,26 @@ const queyrResult = await notionDatabase.query();
 
 //create
 const createResult = await notionDatabase.create([
-  { type: EType.title, key: "id", value: "new id" },
-  { type: EType.text, key: "description", value: "description update" },
-  { type: EType.text, key: "name", value: "name update" },
-  { type: EType.checkbox, key: "포스팅여부", value: true },
-  { type: EType.date, key: "포스팅날짜", value: "2022-09-01" },
-  { type: EType.number, key: "카운트", value: 1163 },
-  { type: EType.select, key: "status", value: "In" },
+  { type: "title", key: "id", value: "new id" },
+  { type: "text", key: "description", value: "description update" },
+  { type: "text", key: "name", value: "name update" },
+  { type: "checkbox", key: "포스팅여부", value: true },
+  { type: "date", key: "포스팅날짜", value: "2022-09-01" },
+  { type: "number", key: "카운트", value: 1163 },
+  { type: "select", key: "status", value: "In" },
 ]);
 
 // update
 const updateResult = await notionDatabase.update({
   pageId: "your page_id",
   updateDatas: [
-    { type: EType.title, key: "id", value: "id update" },
-    { type: EType.text, key: "description", value: "description update" },
-    { type: EType.text, key: "name", value: "name update" },
-    { type: EType.checkbox, key: "포스팅여부", value: true },
-    { type: EType.date, key: "포스팅날짜", value: "2022-02-01" },
-    { type: EType.number, key: "카운트", value: 1122263 },
-    { type: EType.select, key: "status", value: "Inaaa" },
+    { type: "title", key: "id", value: "id update" },
+    { type: "text", key: "description", value: "description update" },
+    { type: "text", key: "name", value: "name update" },
+    { type: "checkbox", key: "포스팅여부", value: true },
+    { type: "date", key: "포스팅날짜", value: "2022-02-01" },
+    { type: "number", key: "카운트", value: 1122263 },
+    { type: "select", key: "status", value: "Inaaa" },
   ],
 });
 ```

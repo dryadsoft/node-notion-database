@@ -1,13 +1,6 @@
-export declare enum EType {
-    title = "title",
-    text = "text",
-    checkbox = "checkbox",
-    date = "date",
-    number = "number",
-    select = "select"
-}
+declare type FieldType = "title" | "text" | "checkbox" | "date" | "number" | "select";
 export interface IData {
-    type: EType;
+    type: FieldType;
     key: string;
     value: any;
 }
@@ -21,4 +14,5 @@ export default class NotionCreateField {
     private makeField;
     createProperties(datas: IData[]): {};
 }
+export {};
 //# sourceMappingURL=notionCreateField.d.ts.map
