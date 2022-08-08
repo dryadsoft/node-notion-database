@@ -53,3 +53,11 @@ const updateResult = await notionDatabase.update({
   ],
 });
 ```
+
+## Resources
+
+- [CHANGELOG](https://github.com/dryadsoft/node-notion-database/blob/master/CHANGELOG.md)
+
+## License
+
+[MIT](LICENSE)
