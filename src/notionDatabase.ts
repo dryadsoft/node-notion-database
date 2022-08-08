@@ -6,6 +6,10 @@ interface INotionDatabase {
   databaseId: string;
   notionVersion?: string;
 }
+interface IQuery {
+  filter?: { [key: string]: any };
+  sorts?: { [key: string]: any }[];
+}
 interface IUpdate {
   pageId: string;
   updateDatas: IData[];
@@ -36,11 +40,17 @@ export default class NotionDatabase {
       "Content-Type": "application/json",
     };
   }
-  async query() {
+
+  async query({ filter, sorts }: IQuery) {
     return fetch(`${this.BASE_URL}/databases/${this.databaseId}/query`, {
       method: "POST",
       headers: this.createHeaders(),
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        filter: filter && {
+          ...filter,
+        },
+        sorts: sorts && [...sorts],
+      }),
     })
       .then((res) => res.json())
       .then((json) => this.notionField.getRows(json.results));

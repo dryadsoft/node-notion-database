@@ -15,6 +15,10 @@ yarn 사용:
 $ yarn add node-notion-database
 ```
 
+## 지원 property type
+
+> Title, Text, Checkbox, Date, Number, Select
+
 ## 예제(usage)
 
 ```typescript
@@ -24,9 +28,41 @@ const notionDatabase = new NotionDatabase({
   secretKey: "Your notion Secret Key",
   databaseId: "Your notion Database Id",
 });
+const filter = {
+  and: [
+    {
+      property: "포스팅여부",
+      checkbox: {
+        equals: true,
+      },
+    },
+    {
+      property: "카운트",
+      number: {
+        greater_than_or_equal_to: 2,
+      },
+    },
+  ],
+};
+const sorts = [{ property: "카운트", direction: "ascending" }];
+// query all
+const queyrResult = await notionDatabase.query({});
+console.log(queyrResult);
 
-// query
-const queyrResult = await notionDatabase.query();
+// query filter
+const queyrFilterResult = await notionDatabase.query({ filter });
+console.log(queyrFilterResult);
+
+// query sort
+const queyrSortResult = await notionDatabase.query({ sorts });
+console.log(queyrSortResult);
+
+// query filter and sort
+const queyrFilterAndSortResult = await notionDatabase.query({
+  filter,
+  sorts,
+});
+console.log(queyrFilterAndSortResult);
 
 //create
 const createResult = await notionDatabase.create([
