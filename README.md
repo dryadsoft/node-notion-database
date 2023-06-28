@@ -24,7 +24,17 @@ $ yarn add node-notion-database
 ```typescript
 import NotionDatabase from "notionDatabase";
 
-const notionDatabase = new NotionDatabase({
+interface IProperties {
+  카운트: number;
+  description: string;
+  포스팅여부: boolean;
+  포스팅날짜: any;
+  status: any;
+  name: string;
+  id: string;
+}
+
+const notionDatabase = new NotionDatabase<IProperties>({
   secretKey: "Your notion Secret Key",
   databaseId: "Your notion Database Id",
 });
@@ -46,7 +56,7 @@ const filter = {
 };
 const sorts = [{ property: "카운트", direction: "ascending" }];
 // query all
-const queyrResult = await notionDatabase.query({});
+const queyrResult = await notionDatabase.query();
 console.log(queyrResult);
 
 // query filter

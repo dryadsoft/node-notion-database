@@ -1,11 +1,11 @@
 type FieldType = "title" | "text" | "checkbox" | "date" | "number" | "select";
-export interface IData {
+export interface IData<T> {
   type: FieldType;
-  key: string;
+  key: keyof T;
   value: any;
 }
-export default class NotionCreateField {
-  private makeTitleField({ key, value }: { key: string; value: string }) {
+export default class NotionCreateField<T> {
+  private makeTitleField({ key, value }: { key: keyof T; value: string }) {
     return {
       [key]: {
         title: [
@@ -18,7 +18,7 @@ export default class NotionCreateField {
       },
     };
   }
-  private makeTextField({ key, value }: { key: string; value: string }) {
+  private makeTextField({ key, value }: { key: keyof T; value: string }) {
     return {
       [key]: {
         rich_text: [
@@ -31,21 +31,21 @@ export default class NotionCreateField {
       },
     };
   }
-  private makeCheckboxField({ key, value }: { key: string; value: boolean }) {
+  private makeCheckboxField({ key, value }: { key: keyof T; value: boolean }) {
     return {
       [key]: {
         checkbox: value,
       },
     };
   }
-  private makeNumberField({ key, value }: { key: string; value: number }) {
+  private makeNumberField({ key, value }: { key: keyof T; value: number }) {
     return {
       [key]: {
         number: value,
       },
     };
   }
-  private makeDateField({ key, value }: { key: string; value: string }) {
+  private makeDateField({ key, value }: { key: keyof T; value: string }) {
     return {
       [key]: {
         date: {
@@ -54,7 +54,7 @@ export default class NotionCreateField {
       },
     };
   }
-  private makeSelectField({ key, value }: { key: string; value: string }) {
+  private makeSelectField({ key, value }: { key: keyof T; value: string }) {
     return {
       [key]: {
         select: {
@@ -63,7 +63,7 @@ export default class NotionCreateField {
       },
     };
   }
-  private makeField({ type, key, value }: IData) {
+  private makeField({ type, key, value }: IData<T>) {
     let resultField: { [key: string]: any };
     switch (type) {
       case "title":
@@ -89,8 +89,8 @@ export default class NotionCreateField {
     }
     return resultField;
   }
-  public createProperties(datas: IData[]) {
-    return datas.reduce((acc: {} | IData, data: IData) => {
+  public createProperties(datas: IData<T>[]) {
+    return datas.reduce((acc: {} | IData<T>, data: IData<T>) => {
       const field = this.makeField(data);
       acc = { ...acc, ...field };
       return acc;
